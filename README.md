@@ -136,33 +136,41 @@ A function for generating the files needed to turn an iframe-ready web component
 into a DGLux project. Note that projects are imported in .zip format, and
 dgframe does not provide the actual zip bundling behavior.
 
-Three parameters are required for this function, and a fourth parameter is
-optional. The first parameter is the path of the HTML file to open, relative to
-the base of the zip file. This parameter is usually something like
-'assets/index.html'. The second parameter is the name of the DGLux symbol
-to create with the iframe and parameters.
+The only parameter required for this function is an object with the following
+acceptable keys.
 
-The third parameter is a list of DGLux parameters. Each list item is an object
-with the following structure:
+- projectName: Name of the project to generate. If not specified, dgframe will
+attempt to use symbolName.
+- symbolName: Name of the symbol created for the iframe. If not specified,
+dgframe will attempt to use projectName.
+- indexUrl: URL of the iframe component's main page, relative to the base of
+the archive, so usually following a `projectName`/assets/\* format. If not
+specified, it defaults to `projectName`/assets/index.html.
+- callback: Optional callback, will be called with a file's path and contents
+as parameters.
+- params: A list of DGLux parameters for the iframe's symbol parameters. Each
+list item is an object with the following structure:
 
+---
 - name
 - type
 - default (default value, optional)
+---
 
 This function will return an object with the keys representing paths in the zip
 file, and the values representing the contents of these files.
 
-The fourth parameter is an optional callback that will be called with a file's
-path and contents as parameters.
-
 ```js
-dgframe.dashboard.exportIFrameDashboard('assets/index.html',
-    'symbolname', [
-      {
-        name: 'a',
-        type: 'string'
-      }
-    ]);
+dgframe.dashboard.exportIFrameDashboard({
+  projectName: 'test_project',
+  symbolName: 'symbol_name',
+  params: [
+    {
+      name: 'a',
+      type: 'string'
+    }
+  ]
+});
 
 /* {
   '_proj.json': '...',

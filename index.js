@@ -166,7 +166,15 @@
   };
 
   frame.dashboard = {
-    exportIFrameDashboard: function(indexUrl, symbolName, params, cb) {
+    exportIFrameDashboard: function(obj) {
+      var projectName = obj.projectName || obj.symbolName;
+      var symbolName = obj.symbolName || obj.projectName;
+      var indexUrl = obj.indexUrl || projectName + '/assets/index.html';
+      var params = obj.params || [];
+
+      if(!obj.projectName)
+        throw new Error('a project or symbol name must be specified!');
+
       var symbols = {};
 
       symbols[symbolName] = {
@@ -217,20 +225,20 @@
 
       var proj = JSON.stringify({
         owner: 'dgSuper',
-        name: symbolName,
+        name: projectName,
         isTemplate: false,
         canRead: [],
         canWrite: ['*']
       });
 
-      if(cb) {
-        cb('index.dg5', index);
-        cb('_proj.json', proj);
+      if(obj.callback) {
+        obj.callback(projectName + '/index.dg5', index);
+        obj.callback(projectName + '/_proj.json', proj);
       }
 
       return {
-        'index.dg5': index,
-        '_proj.json': proj
+        projectName + '/index.dg5': index,
+        projectName + '/_proj.json': proj
       };
     }
   };

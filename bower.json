@@ -1,0 +1,20 @@
+{
+  "name": "dgframe",
+  "description": "Small library for interacting with DGLux.",
+  "main": "index.js",
+  "authors": [
+    "Rick Zhou <z.zhou@dglogik.com>",
+    "Michael Bullington <m.bullington@dglogik.com>"
+  ],
+  "license": "Apache-2.0",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

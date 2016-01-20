@@ -1,0 +1,21 @@
+{
+  "name": "dgframe",
+  "version": "1.0.0",
+  "description": "Small library for interacting with DGLux.",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start"
+  },
+  "contributors": [
+    "Rick Zhou <z.zhou@dglogik.com>",
+    "Michael Bullington <m.bullington@dglogik.com>"
+  ],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "karma": "^0.13.19",
+    "karma-browserify": "^4.4.2",
+    "karma-mocha": "^0.2.1",
+    "karma-spec-reporter": "0.0.23",
+    "mocha": "^2.3.4"
+  }
+}

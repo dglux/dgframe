@@ -236,10 +236,12 @@
         obj.callback(projectName + '/_proj.json', proj);
       }
 
-      return {
-        projectName + '/index.dg5': index,
-        projectName + '/_proj.json': proj
-      };
+      var map = {};
+
+      map[projectName + '/index.dg5'] = index;
+      map[projectName + '/_proj.json'] = proj;
+
+      return map;
     }
   };
 

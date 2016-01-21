@@ -172,16 +172,24 @@
       var indexUrl = obj.indexUrl || projectName + '/assets/index.html';
       var params = obj.params || [];
 
+      var palettePath = projectName + '/palette/' + symbolName + '.dg5';
+
       if(!obj.projectName)
         throw new Error('a project or symbol name must be specified!');
 
       var symbols = {};
 
+      var iframeUrl = indexUrl;
+      if(iframeUrl.indexOf(projectName + '/') === 0)
+        iframeUrl = iframeUrl.substring(projectName.length + 1);
+
+      console.log(iframeUrl);
+
       symbols[symbolName] = {
         '@type': 'iframe',
         width: '100%',
         height: '100%',
-        url: indexUrl,
+        url: iframeUrl,
         '@params': {
           '!reuse': true,
           '!var': params.map(function(param) {
@@ -232,13 +240,13 @@
       });
 
       if(obj.callback) {
-        obj.callback(projectName + '/index.dg5', index);
+        obj.callback(palettePath, index);
         obj.callback(projectName + '/_proj.json', proj);
       }
 
       var map = {};
 
-      map[projectName + '/index.dg5'] = index;
+      map[palettePath] = index;
       map[projectName + '/_proj.json'] = proj;
 
       return map;

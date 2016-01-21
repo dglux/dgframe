@@ -183,8 +183,6 @@
       if(iframeUrl.indexOf(projectName + '/') === 0)
         iframeUrl = iframeUrl.substring(projectName.length + 1);
 
-      console.log(iframeUrl);
-
       symbols[symbolName] = {
         '@type': 'iframe',
         width: '100%',

@@ -59,7 +59,7 @@
   // raw object to get/set values, setting requires a call to pushParams
   frame.params = {};
 
-  // could be used elsewhere in application, which is why it's publically exposed
+  // could be used elsewhere in application, which is why it's publicly exposed
   frame.EventEmitter = EventEmitter;
 
   // is the value a table?
